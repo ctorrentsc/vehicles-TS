@@ -1,0 +1,133 @@
+<head>
+  <script src="../models/car.js"></script>
+  <script src="../models/wheel.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- container principal-->
+    <h1 class="text-center my-5">Exercici de Vehicles</h1>
+
+    <div class="d-flex flex-wrap justify-content-around align-items-center">
+      <!-- flexbox -->
+
+      <div class="card text-white bg-dark" style="width: 18rem;">
+        <!-- card -->
+        <div class="card-body">
+          <h5 class="card-title">CREA EL TEU AUTOMÒBIL</h5>
+          <form id="main_form" class="needs-validation" novalidate>
+            <!-- form dades cotxe -->
+            <div class="form-group">
+              <label for="plateCar">Matrícula</label>
+              <input type="text" class="form-control text-uppercase" id="plateCar" aria-describedby="plate" autofocus>
+              <div id="errorPlate">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="colorCar">Color</label>
+              <input type="text" class="form-control text-uppercase" id="colorCar" aria-describedby="color">
+            </div>
+            <div class="form-group">
+              <label for="brandCar">Marca</label>
+              <input type="text" class="form-control text-uppercase" id="brandCar" aria-describedby="brand">
+            </div>
+            <button type="submit" class="btn btn-primary">CREAR</button>
+            <input type="button" class="btn btn-danger ml-2" onclick="clearCar()" value="NETEJAR"></input>
+          </form> <!-- final form dades cotxe -->
+        </div>
+      </div> <!-- final card -->
+
+      <div class="jumbotron mt-5 mt-lg-0 ml-3 text-uppercase" id="productList" style="width: 30rem;"> <!-- display dades cotxe -->
+      </div> <!-- final display dades cotxe -->
+
+    </div> <!-- final flexbox -->
+
+    <div class="container mt-5 d-none" id="wheelsList">
+      <!-- contenidor pneumàtics -->
+      <div class="h3 text-uppercase mt-2">
+        Escull els pneumàtics
+      </div>
+
+      <form id="wheels_form" class="border border-secondary rounded pr-5 py-3 needs-validation">
+        <!-- form pneumàtics -->
+
+        <div class="row">
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="wheel1" class="mx-2">Marca Roda1</label>
+            <input type="text" class="form-control mx-4 text-uppercase" id="wheel1" aria-describedby="plate">
+          </div>
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="diameter1" class="mx-2">Diàmetre Roda1</label>
+            <input type="text" class="form-control mx-4" id="diameter1" aria-describedby="plate">
+          </div>
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="wheel2" class="mx-2">Marca Roda2</label>
+            <input type="text" class="form-control mx-4 text-uppercase" id="wheel2" aria-describedby="plate">
+          </div>
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="diameter2" class="mx-2">Diàmetre Roda2</label>
+            <input type="text" class="form-control mx-4" id="diameter2" aria-describedby="plate">
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="wheel3" class="mx-2">Marca Roda3</label>
+            <input type="text" class="form-control mx-4 text-uppercase" id="wheel3" aria-describedby="plate">
+          </div>
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="diameter3" class="mx-2">Diàmetre Roda3</label>
+            <input type="text" class="form-control mx-4" id="diameter3" aria-describedby="plate">
+          </div>
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="wheel4" class="mx-2">Marca Roda4</label>
+            <input type="text" class="form-control mx-4 text-uppercase" id="wheel4" aria-describedby="plate">
+          </div>
+
+          <div class="col-6 col-md-3 form-group">
+            <label for="diameter4" class="mx-2">Diàmetre Roda4</label>
+            <input type="text" class="form-control mx-4" id="diameter4" aria-describedby="plate">
+          </div>
+
+        </div>
+        
+        <div id="errorWheels" class="text-danger small ml-3">
+        </div>
+
+        <button type="submit" class="btn btn-primary ml-4 mt-3" onclick="sumWheels()">Afegir pneumàtics</button>
+      </form> <!-- final form pneumàtics -->
+
+    </div> <!-- final contenidor pneumàtics -->
+
+
+
+  </div> <!-- final container principal-->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
+  <script src="../controllers/controller.js"></script>
+</body>
+
+</html>
