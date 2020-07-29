@@ -19,26 +19,33 @@ var form = document.getElementById("main_form") as HTMLFormElement;
 
   if(plate == ""){ 
     (document.getElementById("plateCar") as HTMLDivElement).classList.add("is-invalid");
+    (document.getElementById("errorPlate") as HTMLParagraphElement).innerHTML = "Ompliu el camp";
     errores++;
   } else if (!validatePlate()) {
     (document.getElementById("plateCar") as HTMLDivElement).classList.add("is-invalid");
+    (document.getElementById("errorPlate") as HTMLParagraphElement).innerHTML = "Format de matrícula incorrecte";
     alert("La matrícula ha de tenir 4 números i 3 lletres, sense espais.");
   } else {
     (document.getElementById("plateCar") as HTMLDivElement).classList.remove("is-invalid");
+    (document.getElementById("errorPlate") as HTMLParagraphElement).innerHTML = "";
   }
   
   if(color == "") {
     (document.getElementById("colorCar") as HTMLDivElement).classList.add("is-invalid");
+    (document.getElementById("errorColor") as HTMLParagraphElement).innerHTML = "Ompliu el camp";
     errores++;
   } else {
     (document.getElementById("colorCar") as HTMLDivElement).classList.remove("is-invalid");
+    (document.getElementById("errorColor") as HTMLParagraphElement).innerHTML = "";
   }
   
   if(brand == "") {
     (document.getElementById("brandCar") as HTMLDivElement).classList.add("is-invalid");
+    (document.getElementById("errorBrand") as HTMLParagraphElement).innerHTML = "Ompliu el camp";
     errores++;
   } else {
     (document.getElementById("brandCar") as HTMLDivElement).classList.remove("is-invalid");
+    (document.getElementById("errorBrand") as HTMLParagraphElement).innerHTML = "";
   }
 
   if (errores > 0) { 

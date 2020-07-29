@@ -25,16 +25,17 @@
             <div class="form-group">
               <label for="plateCar">Matrícula</label>
               <input type="text" class="form-control text-uppercase" id="plateCar" aria-describedby="plate" autofocus>
-              <div id="errorPlate">
-              </div>
+              <p id="errorPlate" class="text-muted font-italic"></p>
             </div>
             <div class="form-group">
               <label for="colorCar">Color</label>
               <input type="text" class="form-control text-uppercase" id="colorCar" aria-describedby="color">
+              <p id="errorColor" class="text-muted font-italic"></p>
             </div>
             <div class="form-group">
               <label for="brandCar">Marca</label>
               <input type="text" class="form-control text-uppercase" id="brandCar" aria-describedby="brand">
+              <p id="errorBrand" class="text-muted font-italic"></p>
             </div>
             <button type="submit" class="btn btn-primary">CREAR</button>
             <input type="button" class="btn btn-danger ml-2" onclick="clearCar()" value="NETEJAR"></input>

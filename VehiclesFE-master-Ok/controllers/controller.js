@@ -12,28 +12,35 @@ form.addEventListener("submit", function (event) {
     var brand = document.getElementById("brandCar").value;
     if (plate == "") {
         document.getElementById("plateCar").classList.add("is-invalid");
+        document.getElementById("errorPlate").innerHTML = "Ompliu el camp";
         errores++;
     }
     else if (!validatePlate()) {
         document.getElementById("plateCar").classList.add("is-invalid");
+        document.getElementById("errorPlate").innerHTML = "Format de matrícula incorrecte";
         alert("La matrícula ha de tenir 4 números i 3 lletres, sense espais.");
     }
     else {
         document.getElementById("plateCar").classList.remove("is-invalid");
+        document.getElementById("errorPlate").innerHTML = "";
     }
     if (color == "") {
         document.getElementById("colorCar").classList.add("is-invalid");
+        document.getElementById("errorColor").innerHTML = "Ompliu el camp";
         errores++;
     }
     else {
         document.getElementById("colorCar").classList.remove("is-invalid");
+        document.getElementById("errorColor").innerHTML = "";
     }
     if (brand == "") {
         document.getElementById("brandCar").classList.add("is-invalid");
+        document.getElementById("errorBrand").innerHTML = "Ompliu el camp";
         errores++;
     }
     else {
         document.getElementById("brandCar").classList.remove("is-invalid");
+        document.getElementById("errorBrand").innerHTML = "";
     }
     if (errores > 0) {
         alert("Siusplau, ompliu tots els camps");
