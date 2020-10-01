@@ -9,5 +9,8 @@ var Car = /** @class */ (function () {
     Car.prototype.addWheel = function (wheel) {
         this.wheels.push(wheel);
     };
+    Car.prototype.removeWheels = function () {
+        this.wheels = [];
+    };
     return Car;
 }());

@@ -13,4 +13,8 @@ class Car{
     addWheel(wheel:Wheel):void{
         this.wheels.push(wheel);
     }
+
+    removeWheels(){
+        this.wheels = [];
+    }
 }

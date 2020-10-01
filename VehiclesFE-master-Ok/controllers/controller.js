@@ -78,37 +78,47 @@ function sumWheels() {
         event.preventDefault();
         event.stopPropagation();
     });
-    formWheels.addEventListener("submit", wheelsValidity); // Validació
-    if (wheelsValidity() == true) {
-        for (var i = 1; i <= 4; i++) {
-            var wheelBrand = document.getElementById("wheel" + i).value;
-            var wheelDiam = document.getElementById("diameter" + i).value;
-            if (wheelBrand == "" || wheelDiam == "") {
-                alert("Siusplau, ompliu tots els camps");
-                return; // return pq no fagi el bucle i segueixi comprovant la resta de camps
+    if (car.wheels.length <= 4) {
+        formWheels.addEventListener("submit", wheelsValidity); // Validació
+        if (wheelsValidity() == true) {
+            for (var i = 1; i <= 4; i++) {
+                var wheelBrand = document.getElementById("wheel" + i).value;
+                var wheelDiam = document.getElementById("diam_" + i).value; //Obtenim string!
+                console.log(wheelBrand, wheelDiam);
+                if (wheelBrand == "" || wheelDiam == "") {
+                    alert("Siusplau, ompliu tots els camps");
+                    return; // return pq no fagi el bucle i segueixi comprovant la resta de camps
+                }
+                else {
+                    var wheelDiam_num = Number(wheelDiam); //Convertim el diametre a Number
+                    var wheel = new Wheel(wheelDiam_num, wheelBrand); //Creem els pneumàtics recollint inputs de marca i diàmetre
+                    car.addWheel(wheel); //Utilitzem el mètode addWheel de la classe Car
+                    console.log(car.wheels);
+                }
             }
-            else {
-                var wheel = new Wheel(Number(wheelDiam), wheelBrand); //Creem els pneumàtics recollint inputs de marca i diàmetre
-                car.addWheel(wheel); //Utilitzem el mètode addWheel de la classe Car
+            console.log(car);
+            //Imprimim el resultat en un Jumbotron
+            var jumbotron = document.getElementById("productList");
+            jumbotron.innerHTML = "Matr\u00EDcula del vehicle: " + car.plate + "<br>Color: " + car.color + "<br>Marca: " + car.brand;
+            for (var i = 0; i < 4; i++) {
+                console.log(car.wheels[i]);
+                jumbotron.innerHTML += "<br>" + "<br>" + "Roda " + (i + 1) + ":" + "<br>" + "Diàmetre: " + car.wheels[i].diameter +
+                    "  Marca: " + car.wheels[i].brand;
             }
         }
-        console.log(car);
-        //Imprimim el resultat en un Jumbotron
-        var jumbotron = document.getElementById("productList");
-        jumbotron.innerHTML = "Matr\u00EDcula del vehicle: " + car.plate + "<br>Color: " + car.color + "<br>Marca: " + car.brand;
-        for (var i = 0; i <= 4; i++) {
-            jumbotron.innerHTML += "<br>" + "<br>" + "Roda " + (i + 1) + ":" + "<br>" + "Diàmetre: " + car.wheels[i].diameter +
-                "  Marca: " + car.wheels[i].brand;
-        }
+        return;
     }
-    return;
+    else {
+        alert("El cotxe ja té 4 pneumàtics vàlids, seleccioneu el botó Modificar");
+    }
 }
 // FUNCIÓ VALIDAR PNEUMÀTICS (Diàmetre)
 function wheelsValidity() {
     var errorWheels = document.getElementById("errorWheels");
     var errorDiam = 0;
     for (var i = 1; i <= 4; i++) {
-        var wheelDiam = parseInt(document.getElementById("diameter" + i).value);
+        var wheelDiam = document.getElementById("diam_" + i).value;
+        console.log(wheelDiam);
         if (!isValidDiameter(wheelDiam)) {
             errorDiam++;
         }
@@ -126,12 +136,18 @@ function wheelsValidity() {
 }
 //FUNCIÓ VALIDAR DIAMETRE
 function isValidDiameter(diameter) {
-    if (diameter > 0.4 && diameter < 2) {
+    var diameter_num = Number(diameter); //Convertim diàmetre a Number
+    if (diameter_num > 0.4 && diameter_num < 2) {
         return true;
     }
     else {
         return false;
     }
+}
+//FUNCIÓ MODIFICAR RODES
+function modificarRodes() {
+    car.removeWheels();
+    sumWheels();
 }
 // FUNCIÓ NETEJAR CAMPS
 function clearCar() {
